@@ -7,7 +7,7 @@ const handleNewUser = async (req, res) => {
 
     //check if the email exists
     const duplicate = await User.findOne({ email: email }).exec();
-    if (duplicate) return res.sendStatus(409).json({ 'message': 'User already exists' });
+    if (duplicate) return res.sendStatus(409);
 
     try {
         const hashedPwd = await bcrypt.hash(pwd, 10);
